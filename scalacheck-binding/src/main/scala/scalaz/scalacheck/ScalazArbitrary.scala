@@ -374,8 +374,8 @@ object ScalazArbitrary {
   implicit def iterateeInputArbitrary[A: Arbitrary]: Arbitrary[scalaz.iteratee.Input[A]] = {
     import scalaz.iteratee.Input._
     Arbitrary(Gen.oneOf(
-      Gen.value(emptyInput[A]),
-      Gen.value(eofInput[A]),
+      Gen.const(emptyInput[A]),
+      Gen.const(eofInput[A]),
       arbitrary[A].map(e => elInput(e))
     ))
   }

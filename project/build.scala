@@ -60,8 +60,8 @@ object build extends Build {
   lazy val standardSettings: Seq[Sett] = Defaults.defaultSettings ++ sbtrelease.ReleasePlugin.releaseSettings ++ Seq[Sett](
     organization := "org.scalaz",
 
-    scalaVersion := "2.9.2",
-    crossScalaVersions := Seq("2.9.2", "2.9.3", "2.10.1", "2.11.0-SNAPSHOT"),
+    scalaVersion := "2.10.3",
+    crossScalaVersions := Seq("2.10.3"),
     resolvers ++= (if (scalaVersion.value.endsWith("-SNAPSHOT")) List(Opts.resolver.sonatypeSnapshots) else Nil),
 
     scalaBinaryVersion in update := (
@@ -378,11 +378,7 @@ object build extends Build {
   )
 
   object Dependencies {
-    def scalacheck(sv: String) =
-      if (sv startsWith "2.11")
-        "1.11.3"
-      else
-        "1.10.1"
+    def scalacheck(sv: String) = "1.11.3"
   }
 
   lazy val publishSetting = publishTo <<= (version).apply{
