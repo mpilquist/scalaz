@@ -62,10 +62,6 @@ object build extends Build {
     crossScalaVersions := Seq("2.10.3"),
     resolvers ++= (if (scalaVersion.value.endsWith("-SNAPSHOT")) List(Opts.resolver.sonatypeSnapshots) else Nil),
 
-    scalaBinaryVersion in update := (
-      if (scalaVersion.value == "2.11.0-SNAPSHOT") latestScala211PreRelease else scalaBinaryVersion.value
-    ),
-
     scalacOptions <++= (scalaVersion) map { sv =>
       val versionDepOpts =
         if (sv startsWith "2.9")
